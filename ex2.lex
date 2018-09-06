@@ -8,31 +8,35 @@
     int numLinhasBranco = 0;
     int numString = 0;
     int numPalavras = 0;
-   
+    /*NO CASO DO METODO ELE PODE CONSIDERAR PUBLIC VOID OU SOMENTE VOID*/
+    /*NÃO ESTA SOMANDO CORRETAMENTE AS LINHAS EM BRANCO*/
 %}
 
-%s COMENT
-%s COMENTS
-WS      [ \t]+
-PALAVRA [a-zA-Z][a-zA-Z0-9]*
-ID 'public'|'private'|'protectec'|'extends'
-STRING \"[a-zA-Z][a-zA-Z0-9]*+\"
-METODO {ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+'(' //public void insere() // void insere() 
+%x COMENT
+%x COMENTS
+
+WS      	[ \t]+
+PALAVRA 	[a-zA-Z][a-zA-Z0-9]*
+TEXT	        [^ \t\n]+
+PALAVRAS	{PALAVRA}|{TEXT}s
+ID 		'public'|'private'|'protectec'|'extends'
+STRING 		\"[a-zA-Z][a-zA-Z0-9]*+\"
+METODO 		{ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+\(  
 
 %%
-Class+{PALAVRA} {printf("Classe: %s\n", yytext);}
-{PALAVRA} {numPalavras++;}
-{PALAVRA}+\n {numLinhasCodigo++; numPalavras = 0;}
-[^ \t]*  {numPalavras++;}
-<INITIAL>"/*"               {BEGIN(COMENTS);}
-<INITIAL>"//"               {BEGIN(COMENT);}
-<COMENTS>\n        {numLinhasComentario++;numPalavras = 0;}
-<COMENT>\n         {numLinhasComentario++;numPalavras = 0;BEGIN(INITIAL);}
-<COMENTS>"*/"      {numLinhasComentario++;BEGIN(INITIAL);}
-<COMENTS,COMENT,INITIAL>\n {if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
-{STRING} {numString++;numPalavras = 0;}
-{WS}
-.
+
+<INITIAL>"/*"    		{BEGIN(COMENTS);}
+<INITIAL>"//"	           	{BEGIN(COMENT);}
+<INITIAL>Class+{PALAVRA} 	{printf("Classe: %s\n", yytext);}
+{STRING} 			{numString++;numPalavras++;}
+{PALAVRAS} 			{numPalavras++;}
+{PALAVRAS}+\n 			{numLinhasCodigo++; numPalavras = 0;}
+<COMENTS>\n        		{numLinhasComentario++;numPalavras = 0;}
+<COMENT>\n         		{numLinhasComentario++;numPalavras = 0;BEGIN(INITIAL);}
+<COMENTS>"*"+"/"		{numLinhasComentario++;BEGIN(INITIAL);}
+<COMENTS,COMENT,INITIAL>\n 	{if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
+<COMENTS,COMENT,INITIAL>{WS}
+<COMENTS,COMENT,INITIAL>.
  
 %%
 int main(int argc,char *argv[]){
@@ -43,5 +47,4 @@ int main(int argc,char *argv[]){
     printf("Numero de linhas de comentários: %d\n", numLinhasComentario);
     printf("Numero de linhas em branco: %d\n",numLinhasBranco);
     printf("Numero de strings: %d\n", numString);
-    printf("Classes: %d\n", 0);
 }
