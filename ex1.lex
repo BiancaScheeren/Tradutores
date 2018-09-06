@@ -31,24 +31,21 @@
 		PalavrasDiferentes* p = Lista;	
 		numNode = 0;
 		while(p != NULL){
-			printf("print: %s\n", p->palavra);
+			printf("Palavra: %s\n", p->palavra);
 			p = p->next;	
 			numNode++;	
 		};
-	};
+	};/*por algum motivo quando insere na lista ele concateca com o que já existe nos nodos anteriores*/
 
-	void insereSeNaoExiste(PalavrasDiferentes * Lista, char* p){		
-		PalavrasDiferentes* novo = (PalavrasDiferentes*) malloc(sizeof(PalavrasDiferentes));
-                //char* palavra = p;
+	void insereSeNaoExiste(PalavrasDiferentes* Lista, char* p){		
+		PalavrasDiferentes *novo = malloc(sizeof(PalavrasDiferentes));
+     
 		if(!novo){
 			printf("Sem memoria disponivel!\n");
 			exit(1);
 		};
 		if (buscaPalavra(p, Lista) == NULL) {
 			novo->palavra = p;
-			printf("novo: %s\n", novo->palavra);
-			if(Lista != NULL)			
-				printf("lista: %s\n", Lista->palavra);
 			novo->next = Lista;
 			Lista = novo;
 			
@@ -56,18 +53,19 @@
 		};
          }; 
 
-	
 
 	
-%}
+%}/*considerar ":" como terminal??*/
 
 PALAVRA [a-zA-Z][a-zA-Z0-9]*
-TERMINAL "."|"!"|"?"
+TERMINAL "."|"!"|"?" 
 
 %%
+
 {PALAVRA}	{numPalavras++; numPalavrasFrase++; insereSeNaoExiste(ListaPalavras, yytext);}
 {TERMINAL}              {if (numPalavrasFrase > 0){numFrases++; numPalavrasFrase = 0;}}
 \n|\t|.
+
 %%
 int main(int argc,char *argv[]){
 	if (argc > 0) 
@@ -76,17 +74,16 @@ int main(int argc,char *argv[]){
 		yyin = stdin;
         	
         outf = fopen("stats.txt", "wt");
-
-	ListaPalavras = (PalavrasDiferentes*)malloc(sizeof(PalavrasDiferentes));
         yylex();
         
 	if(numPalavrasFrase > 0)
-		numFrases++;
+		numFrases++; //para os casos de ter uma frase apenas e não ter ponto final
 	fprintf(outf, "Numero de palavras: %d\n", numPalavras);
 	fprintf(outf, "Numero de frases: %d\n", numFrases);
 	fprintf(outf, "Numero de palavras diferentes: %d\n", numPalavrasDiferentes);
 	fprintf(outf, "Numero médio de palavras por frase: %f\n", numPalavras/numFrases);
 	fprintf(outf, "Densidade léxica do texto: %f\n", (numPalavrasDiferentes/numPalavras) * 100.f);
+
         fclose(outf);
 }
 
