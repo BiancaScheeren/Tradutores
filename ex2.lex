@@ -20,6 +20,7 @@ STRING \"[a-zA-Z][a-zA-Z0-9]*+\"
 METODO {ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+'(' //public void insere() // void insere() 
 
 %%
+Class+{PALAVRA} {printf("Classe: %s\n", yytext);}
 {PALAVRA} {numPalavras++;}
 {PALAVRA}+\n {numLinhasCodigo++; numPalavras = 0;}
 [^ \t]*  {numPalavras++;}
@@ -30,7 +31,6 @@ METODO {ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+'(' //public void insere() /
 <COMENTS>"*/"      {numLinhasComentario++;BEGIN(INITIAL);}
 <COMENTS,COMENT,INITIAL>\n {if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
 {STRING} {numString++;numPalavras = 0;}
-Class {printf("Classe: %s\n", yytext);}
 {WS}
 .
  
