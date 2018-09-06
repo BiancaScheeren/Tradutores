@@ -361,8 +361,8 @@ static void yynoreturn yy_fatal_error (yyconst char* msg  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 12
-#define YY_END_OF_BUFFER 13
+#define YY_NUM_RULES 13
+#define YY_END_OF_BUFFER 14
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -370,11 +370,13 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[28] =
+static yyconst flex_int16_t yy_accept[46] =
     {   0,
-        0,    0,    0,    0,    0,    0,   13,   11,   10,    8,
-       11,   11,    1,    6,    5,   11,   10,    0,    3,    4,
-        2,    1,    1,    7,    9,    0,    0
+        0,    0,    0,    0,    0,    0,   14,    5,   11,   10,
+        5,    5,    5,    5,   12,    8,    7,   12,    5,    6,
+        5,   11,    5,    1,    2,    5,    5,    5,    0,    9,
+        5,    5,    4,    5,    5,    5,    5,    5,    3,    3,
+        3,    3,    3,    3,    0
     } ;
 
 static yyconst YY_CHAR yy_ec[256] =
@@ -385,13 +387,13 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    2,    1,    4,    1,    1,    1,    1,    1,    1,
         1,    5,    1,    1,    1,    1,    6,    7,    7,    7,
         7,    7,    7,    7,    7,    7,    7,    1,    1,    1,
-        1,    1,    1,    1,    8,    8,    8,    8,    8,    8,
+        1,    1,    1,    1,    8,    8,    9,    8,    8,    8,
         8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
         8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
-        1,    1,    1,    1,    1,    1,    8,    8,    8,    8,
+        1,    1,    1,    1,    1,    1,   10,    8,    8,    8,
 
-        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
-        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,   11,    8,    8,
+        8,    8,    8,    8,   12,    8,    8,    8,    8,    8,
         8,    8,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -409,39 +411,62 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst YY_CHAR yy_meta[9] =
+static yyconst YY_CHAR yy_meta[13] =
     {   0,
-        1,    1,    1,    2,    1,    1,    2,    2
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1
     } ;
 
-static yyconst flex_uint16_t yy_base[29] =
+static yyconst flex_uint16_t yy_base[47] =
     {   0,
-        0,    0,    6,    0,   10,    0,   25,   26,   22,   26,
-       13,   11,   15,   26,   26,   14,   17,   10,   26,   26,
-       26,    0,    0,   26,   26,    7,   26,    8
+        0,    0,   11,   13,   15,    0,  101,   20,   98,  102,
+       25,   33,   39,   73,  102,  102,  102,   47,    0,  102,
+       53,   65,   65,    0,    0,    0,    0,   45,    0,  102,
+        0,    0,    0,    0,    0,   29,   10,   70,   82,   87,
+        0,    0,    0,    0,  102,   18
     } ;
 
-static yyconst flex_int16_t yy_def[29] =
+static yyconst flex_int16_t yy_def[47] =
     {   0,
-       27,    1,    1,    3,    3,    5,   27,   27,   27,   27,
-       27,   27,   27,   27,   27,   27,   27,   28,   27,   27,
-       27,   13,   13,   27,   27,   28,    0,   27
+       45,    1,   46,   46,   46,    5,   45,   45,   45,   45,
+        8,    8,   45,   13,   45,   45,   45,   45,    8,   45,
+       45,   45,   45,    8,    8,   13,   13,   13,   18,   45,
+       21,   21,    8,   23,   23,   13,   13,   13,   45,   39,
+       39,   39,   39,   40,    0,   45
     } ;
 
-static yyconst flex_uint16_t yy_nxt[35] =
+static yyconst flex_uint16_t yy_nxt[115] =
     {   0,
-        8,    9,   10,   11,    8,   12,    8,   13,   14,   26,
-       25,    8,   15,   25,   16,   19,   20,   21,   17,   24,
-       18,   22,   23,   17,   27,    7,   27,   27,   27,   27,
-       27,   27,   27,   27
+        8,    9,   10,   11,    8,   12,    8,   13,   14,   13,
+       13,   13,    9,   16,    9,   16,    9,   17,   15,   18,
+       19,   38,   20,   19,   19,   19,   19,   21,   21,   21,
+       21,   21,   23,   23,   23,   23,   23,   24,   25,   19,
+       37,   20,   19,   19,   19,   26,   27,   27,   27,   27,
+       27,   29,   30,   19,   36,   20,   19,   19,   19,   31,
+       32,   32,   32,   32,   32,   19,   22,   20,   33,   19,
+       19,   34,   35,   35,   35,   35,   35,   39,   39,   39,
+       39,   40,   19,   28,   20,   19,   19,   19,   41,   42,
+       42,   42,   42,   42,   43,   43,   43,   43,   44,   22,
+
+       45,    7,   45,   45,   45,   45,   45,   45,   45,   45,
+       45,   45,   45,   45
     } ;
 
-static yyconst flex_int16_t yy_chk[35] =
+static yyconst flex_int16_t yy_chk[115] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    3,   28,
-       26,    3,    5,   18,    5,   12,   12,   13,   17,   16,
-       11,   13,   13,    9,    7,   27,   27,   27,   27,   27,
-       27,   27,   27,   27
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    3,    3,    4,    4,    5,    5,   46,    5,
+        8,   37,    8,    8,    8,    8,    8,    8,    8,    8,
+        8,    8,   11,   11,   11,   11,   11,   12,   12,   13,
+       36,   13,   13,   13,   13,   13,   13,   13,   13,   13,
+       13,   18,   18,   21,   28,   21,   21,   21,   21,   21,
+       21,   21,   21,   21,   21,   23,   22,   23,   23,   23,
+       23,   23,   23,   23,   23,   23,   23,   38,   38,   38,
+       38,   38,   39,   14,   39,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   40,   40,   40,   40,   40,    9,
+
+        7,   45,   45,   45,   45,   45,   45,   45,   45,   45,
+       45,   45,   45,   45
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -469,10 +494,11 @@ char *yytext;
     int numLinhasBranco = 0;
     int numString = 0;
     int numPalavras = 0;
-   
+    /*NO CASO DO METODO ELE PODE CONSIDERAR PUBLIC VOID OU SOMENTE VOID*/
+    /*NÃO ESTA SOMANDO CORRETAMENTE AS LINHAS EM BRANCO*/
 
 
-#line 476 "ex2.c"
+#line 502 "ex2.c"
 
 #define INITIAL 0
 #define COMENT 1
@@ -692,9 +718,10 @@ YY_DECL
 		}
 
 	{
-#line 22 "ex2.lex"
+#line 26 "ex2.lex"
 
-#line 698 "ex2.c"
+
+#line 725 "ex2.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -721,13 +748,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 28 )
+				if ( yy_current_state >= 46 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 26 );
+		while ( yy_base[yy_current_state] != 102 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -753,69 +780,74 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 23 "ex2.lex"
-{numPalavras++;}
+#line 28 "ex2.lex"
+{BEGIN(COMENTS);}
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 24 "ex2.lex"
-{numLinhasCodigo++; numPalavras = 0;}
+#line 29 "ex2.lex"
+{BEGIN(COMENT);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 25 "ex2.lex"
-{BEGIN(COMENTS);}
+#line 30 "ex2.lex"
+{printf("Classe: %s\n", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 26 "ex2.lex"
-{BEGIN(COMENT);}
+#line 31 "ex2.lex"
+{numString++;numPalavras++;}
 	YY_BREAK
 case 5:
-/* rule 5 can match eol */
 YY_RULE_SETUP
-#line 27 "ex2.lex"
-{numLinhasComentario++;numPalavras = 0;}
+#line 32 "ex2.lex"
+{numPalavras++;}
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 28 "ex2.lex"
-{numLinhasComentario++;numPalavras = 0;BEGIN(INITIAL);}
+#line 33 "ex2.lex"
+{numLinhasCodigo++; numPalavras = 0;}
 	YY_BREAK
 case 7:
+/* rule 7 can match eol */
 YY_RULE_SETUP
-#line 29 "ex2.lex"
-{numLinhasComentario++;BEGIN(INITIAL);}
+#line 34 "ex2.lex"
+{numLinhasComentario++;numPalavras = 0;}
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 30 "ex2.lex"
-{if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
+#line 35 "ex2.lex"
+{numLinhasComentario++;numPalavras = 0;BEGIN(INITIAL);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 31 "ex2.lex"
-{numString++;}
+#line 36 "ex2.lex"
+{numLinhasComentario++;BEGIN(INITIAL);}
 	YY_BREAK
 case 10:
+/* rule 10 can match eol */
 YY_RULE_SETUP
-#line 32 "ex2.lex"
-
+#line 37 "ex2.lex"
+{if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 33 "ex2.lex"
+#line 38 "ex2.lex"
 
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "ex2.lex"
+#line 39 "ex2.lex"
+
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 41 "ex2.lex"
 ECHO;
 	YY_BREAK
-#line 819 "ex2.c"
+#line 851 "ex2.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMENT):
 case YY_STATE_EOF(COMENTS):
@@ -1110,7 +1142,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 28 )
+			if ( yy_current_state >= 46 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
@@ -1138,11 +1170,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 28 )
+		if ( yy_current_state >= 46 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
-	yy_is_jam = (yy_current_state == 27);
+	yy_is_jam = (yy_current_state == 45);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1818,7 +1850,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 35 "ex2.lex"
+#line 41 "ex2.lex"
 
 
 int main(int argc,char *argv[]){
@@ -1829,5 +1861,5 @@ int main(int argc,char *argv[]){
     printf("Numero de linhas de comentários: %d\n", numLinhasComentario);
     printf("Numero de linhas em branco: %d\n",numLinhasBranco);
     printf("Numero de strings: %d\n", numString);
-    printf("Classes: %d\n", 0);
 }
+
