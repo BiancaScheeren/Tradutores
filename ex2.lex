@@ -10,18 +10,19 @@
     int numPalavras = 0;
    
 %}
- 
+
 %s COMENT
 %s COMENTS
+WS      [ \t]+
 PALAVRA [a-zA-Z][a-zA-Z0-9]*
 ID 'public'|'private'|'protectec'|'extends'
 STRING \"[a-zA-Z][a-zA-Z0-9]*+\"
-METODO {ID}+{PALAVRA}+{PALAVRA}
-WS      [ \t]+
- 
+METODO {ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+'(' //public void insere() // void insere() 
+
 %%
 {PALAVRA} {numPalavras++;}
 {PALAVRA}+\n {numLinhasCodigo++; numPalavras = 0;}
+[^ \t]*  {numPalavras++;}
 <INITIAL>"/*"               {BEGIN(COMENTS);}
 <INITIAL>"//"               {BEGIN(COMENT);}
 <COMENTS>\n        {numLinhasComentario++;numPalavras = 0;}
@@ -29,6 +30,7 @@ WS      [ \t]+
 <COMENTS>"*/"      {numLinhasComentario++;BEGIN(INITIAL);}
 <COMENTS,COMENT,INITIAL>\n {if(numPalavras == 0){numLinhasBranco++;};numTotalLinhas++;}
 {STRING} {numString++;numPalavras = 0;}
+Class {printf("Classe: %s\n", yytext);}
 {WS}
 .
  
