@@ -35,7 +35,8 @@
 			p = p->next;	
 			numNode++;	
 		};
-	};/*por algum motivo quando insere na lista ele concateca com o que já existe nos nodos anteriores*/
+	};/*por algum motivo quando insere na lista ele concateca com o que já existe nos nodos anteriores, tentei alterar os ponteiros,
+	mas mesmo assim não funciona corretamente*/
 
 	void insereSeNaoExiste(PalavrasDiferentes* Lista, char* p){		
 		PalavrasDiferentes *novo = malloc(sizeof(PalavrasDiferentes));
