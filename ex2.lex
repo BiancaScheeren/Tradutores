@@ -28,6 +28,7 @@ METODO 		{ID}+{PALAVRA}+{PALAVRA}|{PALAVRA}+{PALAVRA}+\(
 <INITIAL>"/*"    		{BEGIN(COMENTS);}
 <INITIAL>"//"	           	{BEGIN(COMENT);}
 <INITIAL>Class+{PALAVRA} 	{printf("Classe: %s\n", yytext);}
+{METODO}            {printf("Método: %s\n", yytext);}
 {STRING} 			{numString++;numPalavras++;}
 {PALAVRAS} 			{numPalavras++;}
 {PALAVRAS}+\n 			{numLinhasCodigo++; numPalavras = 0;}
